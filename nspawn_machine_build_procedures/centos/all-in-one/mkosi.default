@@ -1,0 +1,32 @@
+[Distribution]
+Distribution=centos_epel
+Release=8-stream
+
+[Output]
+Format=directory
+Output=centosstream8-all-in-one-builder
+#OutputDirectory=/var/lib/machines
+WorkspaceDirectory=/var/tmp
+ReadOnly=yes
+#CompressFs=xz
+
+[Content]
+Packages=
+	dnf
+	git
+	glibc
+	hostname
+	make
+	pandoc
+	passwd
+	python39
+	python39-pip
+	rsync
+	strace
+	yamllint
+	p7zip
+	p7zip-plugins
+        procps-ng
+	java-11-openjdk-devel
+	tar
+	zstd

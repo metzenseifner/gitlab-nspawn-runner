@@ -1,0 +1,17 @@
+# A minimal base image (read-only)
+
+[Distribution]
+Distribution=fedora
+Release=35
+
+[Output]
+ImageVersion=35
+Format=tar
+Output=fedora35-base.tar.xz
+OutputDirectory=/var/lib/machines
+WorkspaceDirectory=/var/tmp
+ReadOnly=yes
+CompressFs=xz
+
+[Packages]
+Packages=

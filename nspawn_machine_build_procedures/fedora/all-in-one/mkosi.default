@@ -1,0 +1,31 @@
+[Distribution]
+Distribution=fedora
+Release=35
+
+[Output]
+ImageVersion=35
+Format=directory
+Output=fedora35-all-in-one-builder
+#OutputDirectory=/var/lib/machines
+WorkspaceDirectory=/var/tmp
+ReadOnly=yes
+#CompressFs=xz
+
+[Packages]
+Packages=
+	ansible
+	dnf
+	git
+	glibc
+	hostname
+	make
+	pandoc
+	passwd
+	python36
+	rsync
+	strace
+	vim
+	yamllint
+
+#[Partitions]
+#BaseImage=/var/lib/machines/fedora35-base.sqfs

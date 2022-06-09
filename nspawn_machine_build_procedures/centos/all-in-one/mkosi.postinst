@@ -1,0 +1,18 @@
+#!/bin/sh
+
+required_dirs=(
+/mnt/remote/smb/netshare_build_hidden
+/mnt/local/nothighavail/nothighavail/persistent
+/mnt/local
+)
+
+function create_required_dirs() {
+	for dir in "${required_dirs[@]}"; do
+		mkdir -p "$dir";
+	done
+}
+
+create_required_dirs
+PYTHON=/usr/bin/python3.9
+$PYTHON -m pip install --prefix /usr/local --upgrade pip
+$PYTHON -m pip install --prefix /usr/local ansible 

@@ -1,0 +1,38 @@
+concurrent = 4
+check_interval = 0
+log_level = "warn"
+log_format = "text"
+
+
+[session_server]
+  session_timeout = 1800
+
+# $CI_CONCURRENT_ID: Unique ID for all jobs running within the given executor. 
+# $CI_CONCURRENT_PROJECT_ID: Unique ID for all jobs running within the given executor and project. 
+# GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH
+
+[[runners]]
+  name = "some_builder_name"
+  limit = 4
+  url = "https://git.uibk.ac.at"
+  token = "GkCEj_HapQjqyTcGFym4"
+  executor = "custom"
+  output_limit = 16384
+  builds_dir = "/var/lib/builder/build/runner_$CI_RUNNER_ID/concurrent_id_$CI_CONCURRENT_ID/job_$CI_JOB_NAME/$CI_PROJECT_PATH"
+  cache_dir = "/var/lib/builder/cache"
+  environment = ["ANSIBLE_VAULT_AV_PASS_FILE=/mnt/local/av_vault.pass"]
+  pre_clone_script = "git config --system --add url.\"${CI_SERVER_PROTOCOL}://gitlab-ci-token:${CI_JOB_TOKEN}@git.domain.com:${CI_SERVER_PORT}/\".insteadOf \"git@git.domain.com:\"\n"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.custom]
+    config_exec = "/var/lib/builder/gitlab_executor_custom/config.bash"
+    config_exec_timeout = 1800
+    prepare_exec = "/var/lib/builder/gitlab_executor_custom/prepare.bash"
+    prepare_exec_timeout = 1800
+    run_exec = "/var/lib/builder/gitlab_executor_custom/run.bash"
+    run_exec_timeout = 2000
+    cleanup_exec = "/var/lib/builder/gitlab_executor_custom/cleanup.bash"
+    cleanup_exec_timeout = 1800
