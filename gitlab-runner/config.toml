@@ -14,8 +14,8 @@ log_format = "text"
 [[runners]]
   name = "some_builder_name"
   limit = 4
-  url = "https://git.uibk.ac.at"
-  token = "GkCEj_HapQjqyTcGFym4"
+  url = "https://git.some.com"
+  token = ""
   executor = "custom"
   output_limit = 16384
   builds_dir = "/var/lib/builder/build/runner_$CI_RUNNER_ID/concurrent_id_$CI_CONCURRENT_ID/job_$CI_JOB_NAME/$CI_PROJECT_PATH"
